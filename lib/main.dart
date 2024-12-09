@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Lexend'),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
