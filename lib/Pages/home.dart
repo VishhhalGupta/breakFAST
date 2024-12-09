@@ -49,11 +49,48 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
               ),
               Container(
-                height: 150,
-                color: Colors.amber,
-                child: ListView.builder(itemBuilder: (context, index) {
-                  return Container(); // You may want to display categories here
-                }),
+                height: 120,
+                child: ListView.separated(
+                  itemCount: categories.length,
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.only(left: 15, right: 15),
+                  separatorBuilder: (BuildContext context, int index) =>
+                      SizedBox(
+                    width: 25,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 100,
+                      decoration: BoxDecoration(
+                          color: categories[index].boxColor.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child:
+                                  SvgPicture.asset(categories[index].iconPath),
+                            ),
+                          ),
+                          Text(
+                            categories[index].name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        ],
+                      ),
+                    ); // You may want to display categories here
+                  },
+                ),
               )
             ],
           )
